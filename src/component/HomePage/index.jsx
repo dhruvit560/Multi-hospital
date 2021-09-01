@@ -1,6 +1,4 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 const HomePage = () => {
   return (
@@ -158,13 +156,7 @@ const HomePage = () => {
                 data-aos="fade-up"
                 data-aos-delay={100}
               >
-                <Swiper
-                  spaceBetween={50}
-                  slidesPerView={3}
-                  onSlideChange={() => console.log("slide change")}
-                  onSwiper={(swiper) => console.log(swiper)}
-                >
-                   <SwiperSlide>
+                   <div>
                     <div className="testimonial-wrap">
                       <div className="testimonial-item">
                         <img
@@ -189,8 +181,8 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
+                    </div>
+                    <div>
                     <div className="testimonial-wrap">
                       <div className="testimonial-item">
                         <img
@@ -215,8 +207,8 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
+                    </div>
+                    <div>
                     <div className="testimonial-wrap">
                       <div className="testimonial-item">
                         <img
@@ -241,8 +233,8 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
+                    </div>
+                    <div>
                     <div className="testimonial-wrap">
                       <div className="testimonial-item">
                         <img
@@ -267,8 +259,8 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
+                    </div>
+                    <div>
                     <div className="testimonial-wrap">
                       <div className="testimonial-item">
                         <img
@@ -293,8 +285,7 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
-                    </SwiperSlide>
-                </Swiper>
+                    </div>
               </div>
             </div>
           </section>
