@@ -15,6 +15,7 @@ import ContactUs from "./container/ContactUs";
 import Appointment from "./container/Appointment";
 import Doctors from "./container/Doctors";
 import Login from "./container/Login";
+import Medicine from "./container/Medicine";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/appointment" component={Appointment}/>
         <Route exact path="/doctors" component={Doctors}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/medicine" component={Medicine}/>
       </Switch>
       <Footer />
     </>

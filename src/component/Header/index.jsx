@@ -55,6 +55,11 @@ const HeaderMain = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link className="nav-link scrollto"  to="/medicine">
+                    Medicine
+                  </Link>
+                </li>
+                <li>
                   <Link className="nav-link scrollto"  to="/doctors">
                     Doctors
                   </Link>
