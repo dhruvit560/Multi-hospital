@@ -3,7 +3,6 @@ import SingleMedicine from "../component/SingleMedicine";
 
 const Medicine = () => {
   const [change, setChange] = useState("");
-  console.log(setChange);
   const data = [
     {
       name: "Dhruvit",

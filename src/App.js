@@ -23,13 +23,13 @@ function App() {
       <HeaderMain />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/department" component={Department} />
-        <Route exact path="/aboutus" component={AboutUs}/>
-        <Route rxact path="/contactus" component={ContactUs}/>
-        <Route exact path="/appointment" component={Appointment}/>
-        <Route exact path="/doctors" component={Doctors}/>
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/medicine" component={Medicine}/>
+        <Route path="/department" component={Department} />
+        <Route path="/aboutus" component={AboutUs} />
+        <Route path="/contactus" component={ContactUs} />
+        <Route path="/appointment" component={Appointment} />
+        <Route path="/doctors" component={Doctors} />
+        <Route path="/login" component={Login} />
+        <Route path="/medicine" component={Medicine} />
       </Switch>
       <Footer />
     </>

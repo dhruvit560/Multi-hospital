@@ -39,7 +39,7 @@ const HeaderMain = () => {
                 </h2>
               </a>
             </div>
-            <nav id="navbar" className="navbar order-last order-lg-0">
+            <nav id="navbar" className="order-last navbar order-lg-0">
               <ul>
                 <li>
                   <Link className="nav-link scrollto active" href="#">
@@ -81,8 +81,8 @@ const HeaderMain = () => {
               to="/appointment"
               className="appointment-btn scrollto"
             >
-              <span className="d-none d-md-inline">Make an</span>
-              Appointment
+              <span className="d-none d-md-inline">Make an Appointment</span>
+               
             </Link>
             <Link to="/login" className="appointment-btn scrollto">
               <span className="d-none d-md-inline">Login/ Signup</span>
