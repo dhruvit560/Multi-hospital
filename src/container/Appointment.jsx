@@ -2,23 +2,23 @@ import { render } from "@testing-library/react";
 import React, { useState } from "react";
 
 const Appointment = () => {
-  const [name,setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [date, setDate] = useState("")
-  const [allEntry,setAllEntry] = useState([])
-  
+  const [userAppointment, setUserAppointment] = useState({
+    name : "",
+    email : "",
+    phone : "",
+    date : "",
+  })
+ 
   // const submitForm = (e) => {
   //   e.preventDefault();
-  //   const newEntry = {name:name, email:email}
-  //   setAllEntry(...allEntry, newEntry);
+  //   const newEntry = {name:name, email:email, phone: phone, date:date,};
+  //   setAllEntry([...allEntry, newEntry]);
   // }
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    const newEntry = {name:name, email:email, phone: phone, date:date,};
-    setAllEntry([...allEntry, newEntry]);
-    console.log(allEntry);
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name);
   }
   return (
     <>
@@ -34,7 +34,7 @@ const Appointment = () => {
               placerat mi et suscipit pulvinar.
             </p>
           </div>
-          <form onSubmit={submitForm} method="post" className="php-email-form">
+          <form method="post" className="php-email-form">
             <div className="row">
               <div className="col-md-4 form-group">
                 <input
@@ -42,8 +42,8 @@ const Appointment = () => {
                   className="form-control"
                   id="name"
                   placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={userAppointment.name}
+                  onChange={handleInput}
                 />
               </div>
               <div className="mt-3 col-md-4 form-group mt-md-0">
@@ -51,8 +51,8 @@ const Appointment = () => {
                   type="email"
                   className="form-control"
                   placeholder="Your Email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value= {email}
+                  value={userAppointment.email}
+                  onChange={handleInput}
                 />
                 <div className="validate" />
               </div>
@@ -63,8 +63,6 @@ const Appointment = () => {
                   name="phone"
                   id="phone"
                   placeholder="Your Phone"
-                  onChange={(e) => setPhone(e.target.value)}
-                  value={phone}
                 />
                 <div className="validate" />
               </div>
@@ -77,8 +75,6 @@ const Appointment = () => {
                   className="form-control datepicker"
                   id="date"
                   placeholder="Appointment Date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
                 />
                 <div className="validate" />
               </div>
@@ -117,18 +113,6 @@ const Appointment = () => {
               <button type="submit">Make an Appointment</button>
             </div>
           </form>
-          {
-            allEntry.map((currentEle) => {
-              return(
-                <div>
-                  <p>{currentEle.name}</p>
-                  <p>{currentEle.email}</p>
-                  <p>{currentEle.phone}</p>
-                  <p>{currentEle.date}</p>
-                </div>
-              )
-            })
-          }
         </div>
       </section>
       

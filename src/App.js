@@ -16,6 +16,7 @@ import Appointment from "./container/Appointment";
 import Doctors from "./container/Doctors";
 import Login from "./container/Login";
 import Medicine from "./container/Medicine";
+import AddMedicine from "./container/AddMedicine";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/doctors" component={Doctors} />
         <Route path="/login" component={Login} />
         <Route path="/medicine" component={Medicine} />
+        <Route path="/add-medicine" component={AddMedicine} />
       </Switch>
       <Footer />
     </>

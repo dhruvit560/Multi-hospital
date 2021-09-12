@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import SingleMedicine from "../component/SingleMedicine";
+import {Link} from "react-router-dom"
+
 
 const Medicine = () => {
   const [change, setChange] = useState("");
@@ -48,7 +50,12 @@ const Medicine = () => {
           </div>
         </div>
         <div className="container">
-          <div className="row">
+          <div className="d-flex align-items-center justify-content-end">
+          <Link href="#" to="/add-medicine" className="m-0 border-none nav-link scrollto active appointment-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path  fill="#fff" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/></svg> Add Medicine</Link>
+          
+          
+          </div>
+          <div className="mt-3 row">
             <div className="mx-auto col-lg-6">
               <input
                 type="search"
@@ -58,7 +65,7 @@ const Medicine = () => {
               />
             </div>
           </div>
-          <div className="mt-5 row">
+          <div className="mt-2 row">
             {data.map((e, index) => (
               <SingleMedicine
                 name={e.name}
