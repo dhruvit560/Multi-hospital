@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SingleMedicine from "../component/SingleMedicine";
 
 const AddMedicine = () => {
   const [inputFields, setInputFields] = useState([
@@ -10,32 +9,57 @@ const AddMedicine = () => {
       details: "",
     },
   ]);
+  // const [values, setValues] = useState([]);
 
-  const handleChanges = (e) => {
-    console.log(e.target.value + " " + e.target.name);
+  const handleChanges = (e, index) => {
+    // console.log(e.target.value + " " + e.target.name);
+    // setValues((values) => ({...values,[e.target.name]:e.target.value}))
+    if (e.target.name == "name") {
+      inputFields[index].name = e.target.value;
+    }
+    if (e.target.name == "quality") {
+      inputFields[index].quality = parseInt(e.target.value);
+    }
+    if (e.target.name == "expiry") {
+      inputFields[index].expiry = parseInt(e.target.value);
+    }
+    if (e.target.name == "details") {
+      inputFields[index].details = e.target.value;
+    }
+
+    // setInputFields(inputFields);
+    console.log(inputFields);
   };
 
   const addInput = (e, index) => {
-    const values = [...inputFields];
-    values.splice(index, 0, { name: "", quality: "", expiry: "", details: "" });
-    setInputFields(values);
-    // console.log(index);
+    const OldValues = [...inputFields];
+    OldValues.splice(index, 0, {
+      name: "",
+      quality: "",
+      expiry: "",
+      details: "",
+    });
+    setInputFields(OldValues);
   };
   const removeInput = (e, index) => {
-    const values = [...inputFields];
-    values.splice(index, 1);
-    setInputFields(values);
+    const OldValues = [...inputFields];
+    OldValues.splice(index, 1);
+    setInputFields(OldValues);
   };
-  const submitForm = () => {};
+  const submitForm = () => {
+    console.log(inputFields);
+    
+    const OldValues = [...inputFields];
+    
+    let localData = JSON.parse(localStorage.getItem("medicine"))
+    localStorage.setItem('medicineData',JSON.stringify(localData))
+    console.log([...localData,inputFields])
+  };
   return (
     <>
       <section id="medicine" className="py-5 medicine">
         <div className="container">
-          <form
-            className="add-medicine"
-            method="post"
-            onSubmit={(e) => submitForm(e)}
-          >
+          <div className="add-medicine" method="post">
             {inputFields.map((e, index) => {
               return (
                 <div className="mt-3 row">
@@ -46,7 +70,8 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Name"
                       name="name"
-                      onChange={(e) => handleChanges(e)}
+                      // value={e.name}
+                      onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -55,7 +80,8 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Quality"
                       name="quality"
-                      onChange={(e) => handleChanges(e)}
+                      // value={e.quality}
+                      onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -64,7 +90,8 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Expire Date"
                       name="expiry"
-                      onChange={(e) => handleChanges(e)}
+                      // value={e.expiry}
+                      onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -73,7 +100,8 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Details"
                       name="details"
-                      onChange={(e) => handleChanges(e)}
+                      // value={e.details}
+                      onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -95,7 +123,17 @@ const AddMedicine = () => {
                 </div>
               );
             })}
-          </form>
+
+            <div className="mt-4 text-center">
+              <button
+                type="submit"
+                onClick={(e) => submitForm(e)}
+                className="mx-auto appointment-btn scrollto"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </>

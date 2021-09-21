@@ -1,11 +1,12 @@
 import React from "react";
 
-const SingleMedicine = ({name,quality,expiryDate,details}) => {
+const SingleMedicine = ({name,quality,expiryDate,details,id}) => {
   return (
-    <div className="col-lg-6 mt-4">
-      <div className="member d-flex align-items-start border p-4">
+    <div className="mt-4 col-lg-6">
+      <div className="p-4 border member d-flex align-items-start">
         <div className="member-info d-flex">
           <div className="pl-3">
+            <p>Id: {id}</p>
             <h4>{name}</h4>
             <p>Quality: {quality}</p>
             <p>Expiry date: {expiryDate}</p>

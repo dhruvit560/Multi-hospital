@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SingleMedicine from "../component/SingleMedicine";
 import {Link} from "react-router-dom"
 
@@ -7,24 +7,28 @@ const Medicine = () => {
   const [change, setChange] = useState("");
   const data = [
     {
+      id:101,
       name: "Dhruvit",
       quality: 3,
       detail: "Morbi vulputate, tortor nec pellentesque molestie, eros",
       expiryDate: "05/10/2021",
     },
     {
+      id:102,
       name: "DDhruvit",
       quality: 4,
       detail: "vulputate, tortor nec pellentesque molestie, eros Morbi ",
       expiryDate: "10/10/2021",
     },
     {
+      id:103,
       name: "ABC",
       quality: 3,
       detail: " tortor nec Morbi vulputate, pellentesque molestie, eros",
       expiryDate: "05/10/2021",
     },
     {
+      id:104,
       name: "XYZ",
       quality: 4,
       detail: "pellentesque Morbi vulputate, tortor nec  molestie, eros",
@@ -32,7 +36,30 @@ const Medicine = () => {
     },
   ];
 
-  console.log(setChange)
+  // console.log(setChange)
+
+  // console.log(data);
+
+  // useEffect(() => {
+  //   const aaa = localStorage.setItem("medicine",  JSON.stringify(data));
+  //   console.log(aaa);
+  // },[data])
+  
+
+  // localStorage.getItem("medicine")
+  
+  const localData = localStorage.getItem("medicineData");
+  let localMData;
+
+  if(localData === null){
+    localStorage.setItem("medicineData",JSON.stringify(data));
+    localMData = data
+  }else{
+    localMData = JSON.parse(localData)
+  }
+  
+  console.log(localMData)
+  
 
   return (
     <>
@@ -66,8 +93,9 @@ const Medicine = () => {
             </div>
           </div>
           <div className="mt-2 row">
-            {data.map((e, index) => (
+            {localMData.map((e, index) => (
               <SingleMedicine
+                // id={e.id}
                 name={e.name}
                 quality={e.quality}
                 expiryDate={e.expiryDate}
