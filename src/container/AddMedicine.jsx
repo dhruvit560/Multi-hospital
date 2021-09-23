@@ -9,31 +9,28 @@ const AddMedicine = () => {
       details: "",
     },
   ]);
-  // const [values, setValues] = useState([]);
 
   const handleChanges = (e, index) => {
-    // console.log(e.target.value + " " + e.target.name);
-    // setValues((values) => ({...values,[e.target.name]:e.target.value}))
+    const value = [...inputFields];
     if (e.target.name == "name") {
-      inputFields[index].name = e.target.value;
+      value[index].name = e.target.value;
     }
     if (e.target.name == "quality") {
-      inputFields[index].quality = parseInt(e.target.value);
+      value[index].quality = parseInt(e.target.value);
     }
     if (e.target.name == "expiry") {
-      inputFields[index].expiry = parseInt(e.target.value);
+      value[index].expiry = parseInt(e.target.value);
     }
     if (e.target.name == "details") {
-      inputFields[index].details = e.target.value;
+      value[index].details = e.target.value;
     }
-
-    // setInputFields(inputFields);
+    setInputFields(value);
     console.log(inputFields);
   };
 
   const addInput = (e, index) => {
     const OldValues = [...inputFields];
-    OldValues.splice(index, 0, {
+    OldValues.splice(index + 1, 0, {
       name: "",
       quality: "",
       expiry: "",
@@ -47,13 +44,28 @@ const AddMedicine = () => {
     setInputFields(OldValues);
   };
   const submitForm = () => {
-    console.log(inputFields);
-    
+    // console.log(inputFields);
+    let localData = JSON.parse(localStorage.getItem("medicine"));
     const OldValues = [...inputFields];
+
+    let n = localData[localData.length - 1].id + 1;
+    let data = OldValues.map((value) => ({...value, "id" : n++}));
+    data.map((d) => localData.push(d))
+    // data.map((d) => localData.push(d))
     
-    let localData = JSON.parse(localStorage.getItem("medicine"))
-    localStorage.setItem('medicineData',JSON.stringify(localData))
-    console.log([...localData,inputFields])
+    console.log(data + "nnnnnn");
+
+    localStorage.setItem("medicineData", JSON.stringify(localData));
+    console.log([...localData, OldValues]);
+
+    // localData.map((d) => inputFields)
+    // let n= localData.length - 1;
+    // let AllData = OldValues.map((value) => ({...value, "id":n++}))
+    // AllData.map((d) => localData.push(d))
+
+    // let n = localData.length + 1
+    // let data = OldValues.map((v) => ({...v,"id":n++}))
+    // data.map((d) => localData.push(d))
   };
   return (
     <>
@@ -70,7 +82,6 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Name"
                       name="name"
-                      // value={e.name}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -80,7 +91,6 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Quality"
                       name="quality"
-                      // value={e.quality}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -90,7 +100,6 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Expire Date"
                       name="expiry"
-                      // value={e.expiry}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -100,7 +109,6 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Details"
                       name="details"
-                      // value={e.details}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>

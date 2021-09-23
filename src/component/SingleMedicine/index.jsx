@@ -6,7 +6,7 @@ const SingleMedicine = ({name,quality,expiryDate,details,id}) => {
       <div className="p-4 border member d-flex align-items-start">
         <div className="member-info d-flex">
           <div className="pl-3">
-            <p>Id: {id}</p>
+            <p>{id}</p>
             <h4>{name}</h4>
             <p>Quality: {quality}</p>
             <p>Expiry date: {expiryDate}</p>
