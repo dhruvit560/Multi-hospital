@@ -5,6 +5,9 @@ import AddMedicine from "./AddMedicine";
 
 const Medicine = () => {
   const [change, setChange] = useState("");
+  const [, reRender] = useState({});
+  const [deleteData, setDeleteData] = useState({});
+
   const data = [
     {
       id: 101,
@@ -36,32 +39,27 @@ const Medicine = () => {
     },
   ];
 
+  const handleRerender = () => {
+    reRender({});
+  }
+
+  const handleDelete = () => {
+    console.log("Delete");
+  }
   
 
   const localData = localStorage.getItem("medicine");
   let localMData;
 
-  if(localData === null){
+  if(localData == null){
     localStorage.setItem("medicine", JSON.stringify(data));
   }else{
     localMData = JSON.parse(localData);
   }
   console.log(localMData);
-  // const localData = localStorage.getItem("medicineData");
-  // let localMData;
-
-  // if (localData === null) {
-  //   localStorage.removeItem("medicineData", JSON.stringify(data));
-  //   localMData = data;
-  // } else {
-  //   localMData = JSON.parse(localData);
-  // }
-
-  // console.log(localMData);
-
   return (
     <>
-      <section id="medicine" className="medicine">
+      <section id="medicine" className="medicine" >
         <div className="container">
           <div className="section-title">
             <h2>Medicine</h2>
@@ -76,7 +74,7 @@ const Medicine = () => {
         </div>
         <div className="container">
           <div className="d-flex align-items-center justify-content-center">
-            <AddMedicine />
+            <AddMedicine reRender={() => handleRerender()} />
           </div>
           <div className="mt-3 row">
             <div className="mx-auto col-lg-6">
@@ -89,13 +87,14 @@ const Medicine = () => {
             </div>
           </div>
           <div className="mt-2 row">
-            {data.map((e, index) => (
+            {localMData.map((e, index) => (
               <SingleMedicine
                 id={e.id}
                 name={e.name}
                 quality={e.quality}
                 expiryDate={e.expiryDate}
                 details={e.detail}
+                deleteData={(e) => handleDelete(e)}
               />
             ))}
           </div>

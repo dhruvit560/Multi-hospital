@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddMedicine = () => {
+const AddMedicine = (props) => {
   const [inputFields, setInputFields] = useState([
     {
       name: "",
@@ -9,6 +9,7 @@ const AddMedicine = () => {
       details: "",
     },
   ]);
+  
 
   const handleChanges = (e, index) => {
     const value = [...inputFields];
@@ -47,25 +48,15 @@ const AddMedicine = () => {
     // console.log(inputFields);
     let localData = JSON.parse(localStorage.getItem("medicine"));
     const OldValues = [...inputFields];
-
+    
     let n = localData[localData.length - 1].id + 1;
     let data = OldValues.map((value) => ({...value, "id" : n++}));
     data.map((d) => localData.push(d))
-    // data.map((d) => localData.push(d))
-    
-    console.log(data + "nnnnnn");
 
-    localStorage.setItem("medicineData", JSON.stringify(localData));
-    console.log([...localData, OldValues]);
-
-    // localData.map((d) => inputFields)
-    // let n= localData.length - 1;
-    // let AllData = OldValues.map((value) => ({...value, "id":n++}))
-    // AllData.map((d) => localData.push(d))
-
-    // let n = localData.length + 1
-    // let data = OldValues.map((v) => ({...v,"id":n++}))
-    // data.map((d) => localData.push(d))
+    localStorage.removeItem("medicine")
+    localStorage.setItem("medicine", JSON.stringify(localData));
+    alert("Submitted")
+    props.reRender();
   };
   return (
     <>
@@ -82,6 +73,7 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Name"
                       name="name"
+                      value={e.name}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -91,6 +83,7 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Quality"
                       name="quality"
+                      value={e.quality}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -100,6 +93,7 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Expire Date"
                       name="expiry"
+                      value={e.expiry}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
@@ -109,6 +103,7 @@ const AddMedicine = () => {
                       class="form-control"
                       placeholder="Details"
                       name="details"
+                      value={e.details}
                       onChange={(e) => handleChanges(e, index)}
                     />
                   </div>
