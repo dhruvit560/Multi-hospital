@@ -43,8 +43,14 @@ const Medicine = () => {
     reRender({});
   }
 
-  const handleDelete = () => {
-    console.log("Delete");
+  const handleDelete = (id) => {
+    let delData = localMData.filter((d) => id !== d.id);
+    console.log(delData);
+
+    localStorage.removeItem("medicine");
+    localStorage.setItem("medicine", JSON.stringify(delData));
+    alert("Delete successfully")
+    reRender({})
   }
   
 
@@ -94,7 +100,7 @@ const Medicine = () => {
                 quality={e.quality}
                 expiryDate={e.expiryDate}
                 details={e.detail}
-                deleteData={(e) => handleDelete(e)}
+                deleteData={() => handleDelete(e.id)}
               />
             ))}
           </div>
