@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const AddMedicine = (props) => {
   const [inputFields, setInputFields] = useState([
@@ -9,7 +9,7 @@ const AddMedicine = (props) => {
       details: "",
     },
   ]);
-  
+  const [newData, setNewData] = useState({});
 
   const handleChanges = (e, index) => {
     const value = [...inputFields];
@@ -45,19 +45,23 @@ const AddMedicine = (props) => {
     setInputFields(OldValues);
   };
   const submitForm = () => {
-    // console.log(inputFields);
     let localData = JSON.parse(localStorage.getItem("medicine"));
     const OldValues = [...inputFields];
-    
-    let n = localData[localData.length - 1].id + 1;
-    let data = OldValues.map((value) => ({...value, "id" : n++}));
-    data.map((d) => localData.push(d))
 
-    localStorage.removeItem("medicine")
+    let n = localData[localData.length - 1].id + 1;
+    let data = OldValues.map((value) => ({ ...value, id: n++ }));
+    data.map((d) => localData.push(d));
+
+    localStorage.removeItem("medicine");
     localStorage.setItem("medicine", JSON.stringify(localData));
-    alert("Submitted")
+    alert("Submitted");
     props.reRender();
   };
+  useEffect(() => {
+    console.log("DDDDD");
+  }, [props.updateItems]);
+
+  console.log(newData);
   return (
     <>
       <section id="medicine" className="py-5 medicine">

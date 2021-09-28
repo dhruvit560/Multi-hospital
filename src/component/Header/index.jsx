@@ -42,35 +42,35 @@ const HeaderMain = () => {
             <nav id="navbar" className="order-last navbar order-lg-0">
               <ul>
                 <li>
-                  <Link className="nav-link scrollto active" href="#">
+                  <Link className="nav-link active" href="#">
                     Home
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="nav-link scrollto"
+                    className="nav-link"
                     to="/department"
                   >
                     Departments
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link scrollto"  to="/medicine">
+                  <Link className="nav-link"  to="/medicine">
                     Medicine
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link scrollto"  to="/doctors">
+                  <Link className="nav-link"  to="/doctors">
                     Doctors
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link scrollto "  to="/aboutus">
+                  <Link className="nav-link "  to="/aboutus">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link scrollto"  to="/contactus">
+                  <Link className="nav-link"  to="/contactus">
                     Contact
                   </Link>
                 </li>
