@@ -102,13 +102,9 @@ const Medicine = () => {
                 quality={e.quality}
                 expiryDate={e.expiryDate}
                 details={e.detail}
-<<<<<<< HEAD
                 editData={() => handleEdit(e.id)}
                 deleteData={() => handleDelete(e.id)
                 }
-=======
-                deleteData={() => handleDelete(e.id)}
->>>>>>> b42b811a0b8a0ee7772711c709c9fd4b4b41f801
               />
             ))}
           </div>
