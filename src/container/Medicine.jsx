@@ -53,7 +53,7 @@ const Medicine = () => {
   const handleEdit = (id) => {
     let edit = localMData.filter((e) => e.id === id);
     setEditData(edit[0]);
-    console.log(editData);
+    
   };
 
   const localData = localStorage.getItem("medicine");
@@ -64,7 +64,7 @@ const Medicine = () => {
   } else {
     localMData = JSON.parse(localData);
   }
-  // console.log(localMData);
+  // 
   return (
     <>
       <section id="medicine" className="medicine">
@@ -82,7 +82,7 @@ const Medicine = () => {
         </div>
         <div className="container">
           <div className="d-flex align-items-center justify-content-center">
-            <AddMedicine reRender={() => handleRerender()} updateItems={setEditData} />
+            <AddMedicine reRender={() => handleRerender()} updateItems={editData} />
           </div>
           <div className="mt-3 row">
             <div className="mx-auto col-lg-6">
