@@ -8,8 +8,9 @@ const Medicine = () => {
   const [, reRender] = useState({});
   const [deleteData, setDeleteData] = useState({});
   const [editData, setEditData] = useState({});
+  const [data,setData] = useState()
 
-  const data = [
+  const Originaldata = [
     {
       id: 101,
       name: "Dhruvit",
@@ -42,29 +43,49 @@ const Medicine = () => {
 
   const handleRerender = () => {
     reRender({});
+    loadData()
   };
 
+  
   const handleDelete = (id) => {
-    let delData = localMData.filter((d) => d.id !== id)
+    let delData = data.filter((d) => d.id !== id)
     localStorage.removeItem("medicine");
     localStorage.setItem("medicine", JSON.stringify(delData))
-    reRender({});
+    handleRerender();
   };
   const handleEdit = (id) => {
-    let edit = localMData.filter((e) => e.id === id);
+    let edit = data.filter((e) => e.id === id);
     setEditData(edit[0]);
     
   };
 
-  const localData = localStorage.getItem("medicine");
-  let localMData;
+  const loadData = () => {
+    const localData = localStorage.getItem("medicine");
+    let localMData;
+  
+    if (localData == null) {
+      localStorage.setItem("medicine", JSON.stringify(Originaldata));
+    } else {
+      localMData = JSON.parse(localData);
+    }
 
-  if (localData == null) {
-    localStorage.setItem("medicine", JSON.stringify(data));
-  } else {
-    localMData = JSON.parse(localData);
+    setData(localMData)
   }
-  // 
+
+  useEffect(
+    () => {
+      loadData()
+    },
+  [])
+
+  const searchHere = (e) => {
+    setChange(e.target.value)
+    console.log(change)
+
+    
+  }
+
+  console.log(data)
   return (
     <>
       <section id="medicine" className="medicine">
@@ -90,12 +111,14 @@ const Medicine = () => {
                 type="search"
                 className="p-3 border w-100"
                 placeholder="Search here"
-                onChange={(e) => setChange(e.target.value)}
+                onChange={(e) => searchHere(e)}
               />
             </div>
           </div>
           <div className="mt-2 row">
-            {localMData.map((e, index) => (
+
+            { data != undefined ?
+            data.map((e, index) => (
               <SingleMedicine
                 id={e.id}
                 name={e.name}
@@ -106,7 +129,7 @@ const Medicine = () => {
                 deleteData={() => handleDelete(e.id)
                 }
               />
-            ))}
+            )) : <p>Loading</p>}
           </div>
         </div>
       </section>
