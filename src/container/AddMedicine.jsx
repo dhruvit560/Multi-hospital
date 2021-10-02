@@ -37,18 +37,19 @@ const AddMedicine = (props) => {
       detail: "",
     });
     setInputFields(OldValues);
+    // console.log(inputFields);
   };
   const removeInput = (e, index) => {
     const OldValues = [...inputFields];
     OldValues.splice(index, 1);
     setInputFields(OldValues);
-  };  
+  };
   const submitForm = () => {
     let localData = JSON.parse(localStorage.getItem("medicine"));
     const OldValues = [...inputFields];
-    
+
     let n = localData[localData.length - 1].id + 1;
-    let data = OldValues.map((value) => ({ ...value, "id": n++ }));
+    let data = OldValues.map((value) => ({ ...value, id: n++ }));
     data.map((d) => localData.push(d));
 
     localStorage.removeItem("medicine");
@@ -57,31 +58,41 @@ const AddMedicine = (props) => {
     props.reRender();
   };
   useEffect(() => {
-    setNewData(props.updateItems)
+    setNewData(props.updateItems);
   }, [props.updateItems]);
-  
+
   const handleUpdateChange = (e) => {
-    console.log(e.target.name)
-   setNewData((value) => ({...value, [e.target.name] : e.target.value}))
-    
-  }
-  const submitUpdate =  ()=> {
+    console.log(e.target.name);
+    setNewData((value) => ({ ...value, [e.target.name]: e.target.value }));
+  };
+  const submitUpdate = () => {
     let localData = JSON.parse(localStorage.getItem("medicine"));
 
     let afterUpdate = localData.map((l) => {
-      if(l.id === newData.id){
-        return newData
-      }else {
-        return l
+      if (l.id === newData.id) {
+        return newData;
+      } else {
+        return l;
       }
-    })
+    });
     localStorage.removeItem("medicine");
     localStorage.setItem("medicine", JSON.stringify(afterUpdate));
-    alert("Updated");
+    // alert("Updated");
     props.reRender();
-    console.log(afterUpdate)
-  }
-  
+    console.log(afterUpdate);
+
+    setInputFields(
+      [
+      {
+        name: "",
+        quality: "",
+        expiryDate: "",
+        detail: "",
+      },
+    ]);
+    console.log(inputFields + "adadd")
+  };
+  console.log(newData);
   return (
     <>
       <section id="medicine" className="py-5 medicine">
@@ -98,7 +109,11 @@ const AddMedicine = (props) => {
                       placeholder="Name"
                       name="name"
                       value={newData ? newData.name : e.name}
-                      onChange={(e) => {newData ? handleUpdateChange(e) :handleChanges(e, index)}}
+                      onChange={(e) => {
+                        newData
+                          ? handleUpdateChange(e)
+                          : handleChanges(e, index);
+                      }}
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -108,7 +123,11 @@ const AddMedicine = (props) => {
                       placeholder="Quality"
                       name="quality"
                       value={newData ? newData.quality : e.quality}
-                      onChange={(e) => handleChanges(e, index)}
+                      onChange={(e) =>
+                        newData
+                          ? handleUpdateChange(e)
+                          : handleChanges(e, index)
+                      }
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -118,7 +137,11 @@ const AddMedicine = (props) => {
                       placeholder="Expire Date"
                       name="expiryDate"
                       value={newData ? newData.expiryDate : e.expiryDate}
-                      onChange={(e) => newData ? handleUpdateChange(e) : handleChanges(e, index)}
+                      onChange={(e) =>
+                        newData
+                          ? handleUpdateChange(e)
+                          : handleChanges(e, index)
+                      }
                     />
                   </div>
                   <div className="col-lg-2 col-6">
@@ -128,48 +151,53 @@ const AddMedicine = (props) => {
                       placeholder="Detail"
                       name="detail"
                       value={newData ? newData.detail : e.detail}
-                      onChange={(e) => handleChanges(e, index)}
+                      onChange={(e) =>
+                        newData
+                          ? handleUpdateChange(e)
+                          : handleChanges(e, index)
+                      }
                     />
                   </div>
-                  <div className="col-lg-2 col-6">
-                    <a
-                      href="#"
-                      className="px-3 mx-2 btn btn-success d-inline-block"
-                      onClick={(e) => addInput(e, index)}
-                    >
-                      +
-                    </a>
-                    <a
-                      onClick={(e) => removeInput(e, index)}
-                      href="#"
-                      className="px-3 btn btn-danger d-inline-block"
-                    >
-                      -
-                    </a>
-                  </div>
+                  {Object.keys(props.updateItems).length === 0 ? (
+                    <div className="col-lg-2 col-6">
+                      <a
+                        href="#"
+                        className="px-3 mx-2 btn btn-success d-inline-block"
+                        onClick={(e) => addInput(e, index)}
+                      >
+                        +
+                      </a>
+                      <button
+                        onClick={(e) => removeInput(e, index)}
+                        href="#"
+                        className="px-3 btn btn-danger d-inline-block "
+                      >
+                        -
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
 
             <div className="mt-4 text-center">
-
-              {
-                  Object.keys(props.updateItems).length === 0 ? <button
+              {Object.keys(props.updateItems).length === 0 ? (
+                <button
                   type="submit"
                   onClick={(e) => submitForm(e)}
                   className="mx-auto appointment-btn scrollto"
                 >
                   Submit
-                </button> : 
+                </button>
+              ) : (
                 <button
-                type="submit"
-                onClick={(e) => submitUpdate(e)}
-                className="mx-auto appointment-btn scrollto"
-              >
-                Update
-              </button>
-                }
-              
+                  type="submit"
+                  onClick={(e) => submitUpdate(e)}
+                  className="mx-auto appointment-btn scrollto"
+                >
+                  Update
+                </button>
+              )}
             </div>
           </div>
         </div>
