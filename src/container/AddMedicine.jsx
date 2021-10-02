@@ -12,6 +12,7 @@ const AddMedicine = (props) => {
   const [newData, setNewData] = useState({});
 
   const handleChanges = (e, index) => {
+    console.log("handleChanges")
     const value = [...inputFields];
     if (e.target.name == "name") {
       value[index].name = e.target.value;
@@ -47,7 +48,6 @@ const AddMedicine = (props) => {
   const submitForm = () => {
     let localData = JSON.parse(localStorage.getItem("medicine"));
     const OldValues = [...inputFields];
-
     let n = localData[localData.length - 1].id + 1;
     let data = OldValues.map((value) => ({ ...value, id: n++ }));
     data.map((d) => localData.push(d));
@@ -62,18 +62,10 @@ const AddMedicine = (props) => {
   }, [props.updateItems]);
 
   const handleUpdateChange = (e) => {
-    console.log(e.target.name);
     setNewData((value) => ({ ...value, [e.target.name]: e.target.value }));
   };
   const submitUpdate = () => {
     let localData = JSON.parse(localStorage.getItem("medicine"));
-
-    let afterUpdate = localData.map((l) => {
-      if (l.id === newData.id) {
-        return newData;
-      } else {
-        return l;
-      }
     });
     localStorage.removeItem("medicine");
     localStorage.setItem("medicine", JSON.stringify(afterUpdate));
