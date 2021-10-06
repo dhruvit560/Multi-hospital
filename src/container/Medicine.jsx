@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SingleMedicine from "../component/SingleMedicine";
 import { Link } from "react-router-dom";
 import AddMedicine from "./AddMedicine";
+// import { value } from "dom7";
 
 const Medicine = () => {
   const [change, setChange] = useState("");
@@ -9,6 +10,7 @@ const Medicine = () => {
   const [deleteData, setDeleteData] = useState({});
   const [editData, setEditData] = useState({});
   const [data,setData] = useState()
+  const [search, setSearch] = useState('');
 
   const Originaldata = [
     {
@@ -78,14 +80,15 @@ const Medicine = () => {
     },
   [])
 
-  const searchHere = (e) => {
-    setChange(e.target.value)
-    console.log(change)
-
-    
+  const shortingData = (e) => {
+    let UpdateSort;
+    if(e.target.value === "hl"){
+      UpdateSort = data.sort((a, b) => (a.quality < b.quality) ? 1 : -1);
+    }else if(e.target.value === "hl"){
+      UpdateSort = data.sort((a, b) => (a.quality > b.quality) ? 1 : -1);
+    }
   }
 
-  console.log(data)
   return (
     <>
       <section id="medicine" className="medicine">
@@ -111,8 +114,15 @@ const Medicine = () => {
                 type="search"
                 className="p-3 border w-100"
                 placeholder="Search here"
-                onChange={(e) => searchHere(e)}
+                onChange={(e) => setSearch(e.target.value)}
               />
+            </div>
+            <div className="mx-auto col-lg-6">
+              <select onClick={(e) => shortingData(e)} className="form-select h-100">
+                <option value="0">-- select --</option>
+                <option value="hl">High to low</option>
+                <option value="lh">Low to high</option>
+              </select>
             </div>
           </div>
           <div className="mt-2 row">
