@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 const doctorData = [
   {
@@ -50,8 +51,11 @@ const Doctors = () => {
         tincidunt viverra erat. Quisque in lectus id nulla viverra sodales in a risus. Aliquam ut sem ex. Duis viverra
         ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
     </div>
+    <div className="text-end">
+      <Link to="" className="appointment-btn mx-auto">Add Doctor</Link>
+    </div>
     <div className="row">
-      
+
          {
            doctorData.map((e) => {
             return (
@@ -63,10 +67,12 @@ const Doctors = () => {
                     <span>{e.position}</span>
                     <p>{e.details}</p>
                     <div className="social">
-                      <a href={e.twitter} target="_blank"><i className="ri-twitter-fill" /></a>
-                      <a href={e.facebook} target="_blank"><i className="ri-facebook-fill" /></a>
-                      <a href={e.insta} target="_blank"><i className="ri-instagram-fill" /></a>
-                      <a href={e.linkdin} target="_blank"> <i className="ri-linkedin-box-fill" /> </a>
+                      <Link to={{ pathname:e.twitter}} target="_blank">
+                        <i className="ri-twitter-fill" />
+                      </Link>
+                      <Link to={e.facebook} target="_blank"><i className="ri-facebook-fill" /></Link>
+                      <Link to={e.insta} target="_blank"><i className="ri-instagram-fill" /></Link>
+                      <Link to={e.linkdin} target="_blank"> <i className="ri-linkedin-box-fill" /> </Link>
                     </div>
                   </div>
                 </div>
