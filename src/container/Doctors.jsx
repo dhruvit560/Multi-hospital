@@ -1,5 +1,44 @@
 import React from "react";
 
+const doctorData = [
+  {
+    name:"John Doe",
+    position: "Chief Medical Officer",
+    details:"Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.",
+    twitter:"https://twitter.com/doctorthemovie?lang=en",
+    facebook:"https://www.facebook.com/realdoctormike/",
+    insta:"https://www.instagram.com/medical.doctors/?hl=en",
+    linkdin:"https://www.linkedin.com/company/linkmydoctor"
+  },
+  {
+    name:"John White",
+    position: "Anesthesiologist",
+    details:"Aenean ac turpis ante. Mauris velit sapie",
+    twitter:"https://twitter.com/doctorthemovie?lang=en",
+    facebook:"https://www.facebook.com/realdoctormike/",
+    insta:"https://www.instagram.com/medical.doctors/?hl=en",
+    linkdin:"https://www.linkedin.com/company/linkmydoctor"
+  },
+  {
+    name:"Umika Loha",
+    position: "Cardiology",
+    details:"Curabitur luctus eleifend odio. Phasellus placerat mi.",
+    twitter:"https://twitter.com/doctorthemovie?lang=en",
+    facebook:"https://www.facebook.com/realdoctormike/",
+    insta:"https://www.instagram.com/medical.doctors/?hl=en",
+    linkdin:"https://www.linkedin.com/company/linkmydoctor"
+  },
+  {
+    name:"Daimy Smith",
+    position: "Neurosurgeon",
+    details:"Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.",
+    twitter:"https://twitter.com/doctorthemovie?lang=en",
+    facebook:"https://www.facebook.com/realdoctormike/",
+    insta:"https://www.instagram.com/medical.doctors/?hl=en",
+    linkdin:"https://www.linkedin.com/company/linkmydoctor"
+  }
+]
+
 const Doctors = () => {
   return (
     <>
@@ -12,70 +51,30 @@ const Doctors = () => {
         ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
     </div>
     <div className="row">
-      <div className="col-lg-6">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-1.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Atha Smith</h4>
-            <span>Chief Medical Officer</span>
-            <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4 mt-lg-0">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-2.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>John White</h4>
-            <span>Anesthesiologist</span>
-            <p>Aenean ac turpis ante. Mauris velit sapien.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-3.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Umika Loha</h4>
-            <span>Cardiology</span>
-            <p>Curabitur luctus eleifend odio. Phasellus placerat mi.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-4.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Daimy Smith</h4>
-            <span>Neurosurgeon</span>
-            <p>Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+         {
+           doctorData.map((e) => {
+            return (
+              <>
+              <div className="col-lg-6 mt-4">
+                <div className="member d-flex align-items-start">
+                  <div className="member-info">
+                    <h4>{e.name}</h4>
+                    <span>{e.position}</span>
+                    <p>{e.details}</p>
+                    <div className="social">
+                      <a href={e.twitter} target="_blank"><i className="ri-twitter-fill" /></a>
+                      <a href={e.facebook} target="_blank"><i className="ri-facebook-fill" /></a>
+                      <a href={e.insta} target="_blank"><i className="ri-instagram-fill" /></a>
+                      <a href={e.linkdin} target="_blank"> <i className="ri-linkedin-box-fill" /> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </>
+            )
+           })
+         }
     </div>
   </div>
 </section>
