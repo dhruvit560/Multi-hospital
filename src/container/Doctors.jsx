@@ -1,85 +1,131 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Doctors = () => {
+  const [data, setData] = useState();
+  const [search, setSearch] = useState();
+
+  const doctorData = [
+    {
+      id: 101,
+      name: "Atha Smith",
+      position: "Chief Medical Officer",
+      details: "Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.",
+      twitter: "https://twitter.com/doctorthemovie?lang=en",
+      facebook: "https://www.facebook.com/Drsonline1/",
+      insta: "https://www.instagram.com/medical.doctors/?hl=en",
+      linkdin: "https://www.linkedin.com/company/linkmydoctor/",
+    },
+    {
+      id: 102,
+      name: "John White",
+      position: "Anesthesiologist",
+      details: "Aenean ac turpis ante. Mauris velit sapien.",
+      twitter: "https://twitter.com/doctorthemovie?lang=en",
+      facebook: "https://www.facebook.com/Drsonline1/",
+      insta: "https://www.instagram.com/medical.doctors/?hl=en",
+      linkdin: "https://www.linkedin.com/company/linkmydoctor/",
+    },
+    {
+      id: 103,
+      name: "Umika Loha",
+      position: "Cardiology",
+      details: "Curabitur luctus eleifend odio. Phasellus placerat mi.",
+      twitter: "https://twitter.com/doctorthemovie?lang=en",
+      facebook: "https://www.facebook.com/Drsonline1/",
+      insta: "https://www.instagram.com/medical.doctors/?hl=en",
+      linkdin: "https://www.linkedin.com/company/linkmydoctor/",
+    },
+    {
+      id: 104,
+      name: "Daimy Smith",
+      position: "Neurosurgeo",
+      details:
+        "Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.",
+      twitter: "https://twitter.com/doctorthemovie?lang=en",
+      facebook: "https://www.facebook.com/Drsonline1/",
+      insta: "https://www.instagram.com/medical.doctors/?hl=en",
+      linkdin: "https://www.linkedin.com/company/linkmydoctor/",
+    },
+  ];
+
+  // const localData = JSON.parse(localStorage.getItem("doctor"));
+  // var localDData;
+
+  //   if (localData == null) {
+  //     localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
+  //   } else {
+  //     localDData = JSON.parse(localData);
+  //   }
+
+  //   setData(localDData);
+
+  // console.log(data);
+
+  console.log(search)
+
+  const changeSearch = () => {
+    
+  }
   return (
     <>
       <section id="doctors" className="doctors">
-  <div className="container">
-    <div className="section-title">
-      <h2>Doctors</h2>
-      <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac. Suspendisse sem risus, molestie vitae arcu et,
-        tincidunt viverra erat. Quisque in lectus id nulla viverra sodales in a risus. Aliquam ut sem ex. Duis viverra
-        ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
-    </div>
-    <div className="row">
-      <div className="col-lg-6">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-1.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Atha Smith</h4>
-            <span>Chief Medical Officer</span>
-            <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
+        <div className="container">
+          <div className="section-title">
+            <h2>Doctors</h2>
+            <p>
+              Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.
+              Suspendisse sem risus, molestie vitae arcu et, tincidunt viverra
+              erat. Quisque in lectus id nulla viverra sodales in a risus.
+              Aliquam ut sem ex. Duis viverra ipsum lacus, ut pharetra arcu
+              sagittis nec. Phasellus a eleifend elit.
+            </p>
           </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4 mt-lg-0">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-2.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>John White</h4>
-            <span>Anesthesiologist</span>
-            <p>Aenean ac turpis ante. Mauris velit sapien.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
+          <div className="text-end">
+            <Link to="add-doctor" className="mx-auto appointment-btn">
+              Add Doctor
+            </Link>
           </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-3.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Umika Loha</h4>
-            <span>Cardiology</span>
-            <p>Curabitur luctus eleifend odio. Phasellus placerat mi.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-6 mt-4">
-        <div className="member d-flex align-items-start">
-          <div className="pic"><img src="../assets/img/doctors/doctors-4.jpg" className="img-doctor" alt /></div>
-          <div className="member-info">
-            <h4>Daimy Smith</h4>
-            <span>Neurosurgeon</span>
-            <p>Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.</p>
-            <div className="social">
-              <a href><i className="ri-twitter-fill" /></a>
-              <a href><i className="ri-facebook-fill" /></a>
-              <a href><i className="ri-instagram-fill" /></a>
-              <a href> <i className="ri-linkedin-box-fill" /> </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
+          <div className="row">
+            <div className="mx-auto col-lg-7">
+              <input
+                type="search"
+                className="p-3 border w-100"
+                placeholder="Search here"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+            {doctorData.map((e, index) => {
+              return (
+                <div className="mt-4 col-lg-6">
+                  <div className="member d-flex align-items-start">
+                    <div className="member-info">
+                      <h4>{e.name}</h4>
+                      <span>{e.position}</span>
+                      <p>{e.details}</p>
+                      <div className="social">
+                        <Link to={e.twitter}>
+                          <i className="ri-twitter-fill" />
+                        </Link>
+                        <Link to={e.facebook}>
+                          <i className="ri-facebook-fill" />
+                        </Link>
+                        <Link to={e.linkdin}>
+                          <i className="ri-instagram-fill" />
+                        </Link>
+                        <Link to={e.linkdin}>
+                          <i className="ri-linkedin-box-fill" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
