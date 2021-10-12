@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> e4dec91f3d07924c64055934942378071dc1e44c
 import { Link } from "react-router-dom";
 import AddDoctor from "./AddDoctor";
 
@@ -48,11 +52,13 @@ const Doctors = () => {
       insta: "https://www.instagram.com/medical.doctors/?hl=en",
       linkdin: "https://www.linkedin.com/company/linkmydoctor/",
     },
+    
   ];
 
   const loadData = () => {
     const localData = JSON.parse(localStorage.getItem("doctor"));
     let localDData;
+<<<<<<< HEAD
 
     if (localData == null) {
       localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
@@ -68,6 +74,21 @@ const Doctors = () => {
   }, []);
 
   // console.log(data)
+=======
+
+    if (localData == null) {
+      localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
+    } else {
+      localDData = localData;
+    }
+
+    setData(localDData)
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
+>>>>>>> e4dec91f3d07924c64055934942378071dc1e44c
 
   const editData = (id) => {
     const UpdData = data.filter((d) => d.id === id);
@@ -100,16 +121,23 @@ const Doctors = () => {
             data
           </button> */}
           <div className="row">
-            <div className="mx-auto col-lg-7">
+            {/* <div className="mx-auto col-lg-7">
               <input
                 type="search"
                 className="p-3 border w-100"
                 placeholder="Search here"
                 onChange={(e) => setSearch(e.target.value)}
               />
+<<<<<<< HEAD
             </div>
             {data !== undefined
               ? data.map((e, index) => {
+=======
+            </div> */}
+            {
+              data !== undefined ? (
+                data.map((e, index) => {
+>>>>>>> e4dec91f3d07924c64055934942378071dc1e44c
                   return (
                     <div className="mt-4 col-lg-6">
                       <div className="member d-flex align-items-start">
@@ -131,6 +159,7 @@ const Doctors = () => {
                               <i className="ri-linkedin-box-fill" />
                             </Link>
                           </div>
+<<<<<<< HEAD
                           <div className="mt-3">
                             <a href="#" onClick={() => editData(e.id)}>
                               <svg
@@ -161,12 +190,19 @@ const Doctors = () => {
                               </svg>
                             </a>
                           </div>
+=======
+>>>>>>> e4dec91f3d07924c64055934942378071dc1e44c
                         </div>
                       </div>
                     </div>
                   );
                 })
+<<<<<<< HEAD
               : <div className="text-center col-12">Loading</div>}
+=======
+              ) : "Loading"
+            }
+>>>>>>> e4dec91f3d07924c64055934942378071dc1e44c
           </div>
         </div>
       </section>
