@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Doctors = () => {
@@ -47,22 +47,25 @@ const Doctors = () => {
       insta: "https://www.instagram.com/medical.doctors/?hl=en",
       linkdin: "https://www.linkedin.com/company/linkmydoctor/",
     },
+    
   ];
 
-  // const localData = JSON.parse(localStorage.getItem("doctor"));
-  // var localDData;
+  const loadData = () => {
+    const localData = JSON.parse(localStorage.getItem("doctor"));
+    let localDData;
 
-  //   if (localData == null) {
-  //     localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
-  //   } else {
-  //     localDData = JSON.parse(localData);
-  //   }
+    if (localData == null) {
+      localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
+    } else {
+      localDData = localData;
+    }
 
-  //   setData(localDData);
+    setData(localDData)
+  }
 
-  // console.log(data);
-
-  console.log(search)
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const changeSearch = () => {
     
@@ -88,41 +91,45 @@ const Doctors = () => {
           </div>
 
           <div className="row">
-            <div className="mx-auto col-lg-7">
+            {/* <div className="mx-auto col-lg-7">
               <input
                 type="search"
                 className="p-3 border w-100"
                 placeholder="Search here"
                 onChange={(e) => setSearch(e.target.value)}
               />
-            </div>
-            {doctorData.map((e, index) => {
-              return (
-                <div className="mt-4 col-lg-6">
-                  <div className="member d-flex align-items-start">
-                    <div className="member-info">
-                      <h4>{e.name}</h4>
-                      <span>{e.position}</span>
-                      <p>{e.details}</p>
-                      <div className="social">
-                        <Link to={e.twitter}>
-                          <i className="ri-twitter-fill" />
-                        </Link>
-                        <Link to={e.facebook}>
-                          <i className="ri-facebook-fill" />
-                        </Link>
-                        <Link to={e.linkdin}>
-                          <i className="ri-instagram-fill" />
-                        </Link>
-                        <Link to={e.linkdin}>
-                          <i className="ri-linkedin-box-fill" />
-                        </Link>
+            </div> */}
+            {
+              data !== undefined ? (
+                data.map((e, index) => {
+                  return (
+                    <div className="mt-4 col-lg-6">
+                      <div className="member d-flex align-items-start">
+                        <div className="member-info">
+                          <h4>{e.name}</h4>
+                          <span>{e.position}</span>
+                          <p>{e.details}</p>
+                          <div className="social">
+                            <Link to={e.twitter}>
+                              <i className="ri-twitter-fill" />
+                            </Link>
+                            <Link to={e.facebook}>
+                              <i className="ri-facebook-fill" />
+                            </Link>
+                            <Link to={e.linkdin}>
+                              <i className="ri-instagram-fill" />
+                            </Link>
+                            <Link to={e.linkdin}>
+                              <i className="ri-linkedin-box-fill" />
+                            </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })
+              ) : "Loading"
+            }
           </div>
         </div>
       </section>

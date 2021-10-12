@@ -12,7 +12,18 @@ const AddDoctor = () => {
       linkdin: "",
     }
   ]);
-  
+  const submitItem = () => {
+    let localData = JSON.parse(localStorage.getItem("doctor"));
+    const OldValue = [...inputField];
+    
+    let n = localData[localData.length - 1].id + 1;
+    let data = OldValue.map((value) => ({ ...value, "id": n++ }));
+    data.map((d) => localData.push(d));
+
+    localStorage.removeItem("doctor");
+    localStorage.setItem("doctor", JSON.stringify(localData));
+    alert("Submitted");
+  }
   const changeInput = (e,index) => {
       const OldValue = [...inputField];
       
@@ -150,6 +161,9 @@ const AddDoctor = () => {
             </>
           );
         })}
+        <div className="text-center">
+          <button onClick={() => submitItem()}>Submit</button>
+        </div>
       </div>
     </>
   );
