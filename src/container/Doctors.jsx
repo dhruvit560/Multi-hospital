@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AddDoctor from "./AddDoctor";
 
 const Doctors = () => {
   const [data, setData] = useState();
@@ -56,9 +57,18 @@ const Doctors = () => {
     console.log(localData)
   }
 
-  const changeSearch = () => {
-    
-  }
+  const editData = (id) => {
+    const UpdData = data.filter((d) => d.id === id);
+    console.log(UpdData)
+  };
+  
+  const deleteData = (id) => {
+    const delData= data.filter((d) => d.id !== id);
+    setData(delData)
+    alert("Delete Data");
+  };
+
+  const changeSearch = () => {};
   return (
     <>
       <section id="doctors" className="doctors">
@@ -73,12 +83,10 @@ const Doctors = () => {
               sagittis nec. Phasellus a eleifend elit.
             </p>
           </div>
-          <div className="text-end">
-            <Link to="add-doctor" className="mx-auto appointment-btn">
-              Add Doctor
-            </Link>
-          </div>
-
+          <AddDoctor/>
+          {/* <button onClick={() => loadData()}>
+            data
+          </button> */}
           <div className="row">
             <div className="mx-auto col-lg-7">
               <input
@@ -88,33 +96,65 @@ const Doctors = () => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            {doctorData.map((e, index) => {
-              return (
-                <div className="mt-4 col-lg-6">
-                  <div className="member d-flex align-items-start">
-                    <div className="member-info">
-                      <h4>{e.name}</h4>
-                      <span>{e.position}</span>
-                      <p>{e.details}</p>
-                      <div className="social">
-                        <Link to={e.twitter}>
-                          <i className="ri-twitter-fill" />
-                        </Link>
-                        <Link to={e.facebook}>
-                          <i className="ri-facebook-fill" />
-                        </Link>
-                        <Link to={e.linkdin}>
-                          <i className="ri-instagram-fill" />
-                        </Link>
-                        <Link to={e.linkdin}>
-                          <i className="ri-linkedin-box-fill" />
-                        </Link>
+            {data !== undefined
+              ? data.map((e, index) => {
+                  return (
+                    <div className="mt-4 col-lg-6">
+                      <div className="member d-flex align-items-start">
+                        <div className="member-info">
+                          <h4>{e.name}</h4>
+                          <span>{e.position}</span>
+                          <p>{e.details}</p>
+                          <div className="social">
+                            <Link to={e.twitter}>
+                              <i className="ri-twitter-fill" />
+                            </Link>
+                            <Link to={e.facebook}>
+                              <i className="ri-facebook-fill" />
+                            </Link>
+                            <Link to={e.linkdin}>
+                              <i className="ri-instagram-fill" />
+                            </Link>
+                            <Link to={e.linkdin}>
+                              <i className="ri-linkedin-box-fill" />
+                            </Link>
+                          </div>
+                          <div className="mt-3">
+                            <a href="#" onClick={() => editData(e.id)}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z" />
+                                <path
+                                  fill="#00cb2c"
+                                  d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"
+                                />
+                              </svg>
+                            </a>
+                            <a href="#" onClick={() => deleteData(e.id)}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                              >
+                                <path fill="none" d="M0 0h24v24H0z" />
+                                <path
+                                  fill="red"
+                                  d="M17 4h5v2h-2v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6H2V4h5V2h10v2zM9 9v8h2V9H9zm4 0v8h2V9h-2z"
+                                />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })
+              : <div className="text-center col-12">Loading</div>}
           </div>
         </div>
       </section>
