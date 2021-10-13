@@ -49,20 +49,12 @@ const Doctors = () => {
     },
   ];
 
-  // const localData = JSON.parse(localStorage.getItem("doctor"));
-  // var localDData;
-
-  //   if (localData == null) {
-  //     localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
-  //   } else {
-  //     localDData = JSON.parse(localData);
-  //   }
-
-  //   setData(localDData);
-
-  // console.log(data);
-
-  console.log(search)
+  const localStore = () => {
+    localStorage.getItem("doctor");
+    const localData = localStorage.setItem("doctor",JSON.stringify(doctorData));
+    setData(localData)
+    console.log(localData)
+  }
 
   const changeSearch = () => {
     

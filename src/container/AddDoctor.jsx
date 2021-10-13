@@ -33,7 +33,15 @@ const AddDoctor = () => {
       }
 
       setInputField(OldValue);
-      console.log(inputField)
+
+
+      
+     
+  }
+
+  const handleSubmit = () => {
+    let localData = JSON.parse(localStorage.getItem("doctor"));
+
   }
   const addInput = (e,index) => {
       const Oldvalue = [...inputField];
