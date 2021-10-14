@@ -1753,3 +1753,7 @@ section {
 .main-header {
   height: 138px;
 }
+.bg-transparent{
+  background: transparent;
+  border: none;
+}

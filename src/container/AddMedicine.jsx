@@ -57,6 +57,7 @@ const AddMedicine = (props) => {
     alert("Submitted");
     props.reRender();
   };
+  
   useEffect(() => {
     setNewData(props.updateItems)
   }, [props.updateItems]);

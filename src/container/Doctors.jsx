@@ -5,6 +5,8 @@ import AddDoctor from "./AddDoctor";
 const Doctors = () => {
   const [data, setData] = useState();
   const [search, setSearch] = useState();
+  const [editData, setEditData] = useState();
+  const [, reRender] = useState({});
 
   const doctorData = [
     {
@@ -50,24 +52,40 @@ const Doctors = () => {
     },
   ];
 
-  const localStore = () => {
-    localStorage.getItem("doctor");
-    const localData = localStorage.setItem("doctor",JSON.stringify(doctorData));
-    setData(localData)
-    console.log(localData)
-  }
+  const loadData = () => {
+    const localData = JSON.parse(localStorage.getItem("doctor"));
+    let localDData;
 
-  const editData = (id) => {
+    if (localData == null) {
+      localDData = localStorage.setItem("doctor", JSON.stringify(doctorData));
+    } else {
+      localDData = localData;
+    }
+
+    setData(localDData);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const handleEdit = (id) => {
     const UpdData = data.filter((d) => d.id === id);
-    console.log(UpdData)
+    setEditData(UpdData[0])
+    // console.log(UpdData)
+    handleRerender()
   };
   
   const deleteData = (id) => {
     const delData= data.filter((d) => d.id !== id);
     setData(delData)
-    alert("Delete Data");
+    handleRerender()
+    // alert("Delete Data");
   };
 
+  const handleRerender = () => {
+    reRender({})
+  }
   const changeSearch = () => {};
   return (
     <>
@@ -83,7 +101,7 @@ const Doctors = () => {
               sagittis nec. Phasellus a eleifend elit.
             </p>
           </div>
-          <AddDoctor/>
+          <AddDoctor reRender={() => handleRerender()} updateItem={editData}/>
           {/* <button onClick={() => loadData()}>
             data
           </button> */}
@@ -99,7 +117,7 @@ const Doctors = () => {
             {data !== undefined
               ? data.map((e, index) => {
                   return (
-                    <div className="mt-4 col-lg-6">
+                    <div className="mt-4 col-lg-6" >
                       <div className="member d-flex align-items-start">
                         <div className="member-info">
                           <h4>{e.name}</h4>
@@ -120,7 +138,7 @@ const Doctors = () => {
                             </Link>
                           </div>
                           <div className="mt-3">
-                            <a href="#" onClick={() => editData(e.id)}>
+                            <button className="bg-transparent" onClick={() => handleEdit(e.id)}>
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
@@ -133,7 +151,7 @@ const Doctors = () => {
                                   d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"
                                 />
                               </svg>
-                            </a>
+                            </button>
                             <a href="#" onClick={() => deleteData(e.id)}>
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
