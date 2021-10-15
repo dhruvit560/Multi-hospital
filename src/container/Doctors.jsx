@@ -86,7 +86,19 @@ const Doctors = () => {
   const handleRerender = () => {
     reRender({})
   }
-  const changeSearch = () => {};
+
+  const changeSearch = (e) =>{
+    const searchData = data.filter((d) => d.name.toLowerCase().includes(e.target.value.toLowerCase()) || d.position.toLowerCase().includes(e.target.value.toLowerCase()) || d.details.toLowerCase().includes(e.target.value.toLowerCase())) 
+
+
+    setData(searchData)
+    handleRerender({})
+
+    
+  }
+  // console.log(search)
+
+  // name || desg || desc
   return (
     <>
       <section id="doctors" className="doctors">
@@ -111,7 +123,7 @@ const Doctors = () => {
                 type="search"
                 className="p-3 border w-100"
                 placeholder="Search here"
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => changeSearch(e)}
               />
             </div>
             {data !== undefined
