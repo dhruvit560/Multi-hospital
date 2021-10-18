@@ -89,12 +89,8 @@ const Doctors = () => {
 
   const changeSearch = (e) =>{
     const searchData = data.filter((d) => d.name.toLowerCase().includes(e.target.value.toLowerCase()) || d.position.toLowerCase().includes(e.target.value.toLowerCase()) || d.details.toLowerCase().includes(e.target.value.toLowerCase())) 
-
-
     setData(searchData)
-    handleRerender({})
-
-    
+    handleRerender({})    
   }
   // console.log(search)
 

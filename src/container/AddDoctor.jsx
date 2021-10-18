@@ -13,7 +13,7 @@ const AddDoctor = (props) => {
       linkdin: "",
     },
   ]);
-  const [newData, setNewData] = useState()
+  const [newData, setNewData] = useState();
 
   const changeInput = (e, index) => {
     const OldValue = [...inputField];
@@ -65,26 +65,26 @@ const AddDoctor = (props) => {
 
     localStorage.removeItem("doctor");
     localStorage.setItem("doctor", JSON.stringify(localData));
-    alert("Submitted")
-    props.reRender()
+    alert("Submitted");
+    props.reRender();
   };
 
   const handleUpdate = () => {
     let localData = JSON.parse(localStorage.getItem("doctor"));
 
     let afterUpdate = localData.map((l) => {
-      if(l.id === newData.id){
-        return newData
-      }else {
-        return l
+      if (l.id === newData.id) {
+        return newData;
+      } else {
+        return l;
       }
-    })
+    });
 
     localStorage.removeItem("doctor");
     localStorage.setItem("doctor", JSON.stringify(afterUpdate));
     alert("Updated");
     props.reRender();
-    console.log(afterUpdate)
+    console.log(afterUpdate);
     setInputField([
       {
         name: "",
@@ -92,24 +92,19 @@ const AddDoctor = (props) => {
         expiryDate: "",
         detail: "",
       },
-    ])
-    setNewData({})
-  }
+    ]);
+    setNewData({});
+  };
 
   useEffect(() => {
-    setNewData(props.updateItem)
-  }, [props.updateItem])
-  console.log(props.updateItem)
+    setNewData(props.updateItem);
+  }, [props.updateItem]);
+  console.log(props.updateItem);
 
-  
-  const ChangeUpdate = () => {
-
-  }
+  const ChangeUpdate = () => {};
   const changeUpdateInput = (e) => {
-   setNewData((value) => ({...value, [e.target.name] : e.target.value}))
-  }
-
-
+    setNewData((value) => ({ ...value, [e.target.name]: e.target.value }));
+  };
 
   return (
     <>
@@ -128,7 +123,11 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Name"
                     name="name"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
                     value={newData === undefined ? e.name : newData.name}
                   />
                 </div>
@@ -138,8 +137,14 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Position"
                     name="position"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
-                    value={newData === undefined ? e.position : newData.position}
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
+                    value={
+                      newData === undefined ? e.position : newData.position
+                    }
                   />
                 </div>
                 <div className="w-100">
@@ -148,9 +153,12 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Details"
                     name="details"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
                     value={newData === undefined ? e.details : newData.details}
-
                   />
                 </div>
                 <div className="w-100">
@@ -159,9 +167,12 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Twitter"
                     name="twitter"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
                     value={newData === undefined ? e.twitter : newData.twitter}
-
                   />
                 </div>
                 <div className="w-100">
@@ -170,9 +181,14 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Facebook"
                     name="facebook"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
-                    value={newData === undefined ? e.facebook : newData.facebook}
-
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
+                    value={
+                      newData === undefined ? e.facebook : newData.facebook
+                    }
                   />
                 </div>
                 <div className="w-100">
@@ -181,9 +197,12 @@ const AddDoctor = (props) => {
                     class="form-control"
                     placeholder="Insta"
                     name="insta"
-                    onChange={(e) => newData === undefined ? changeInput(e, index) : changeUpdateInput(e,index)}
+                    onChange={(e) =>
+                      newData === undefined
+                        ? changeInput(e, index)
+                        : changeUpdateInput(e, index)
+                    }
                     value={newData === undefined ? e.insta : newData.insta}
-
                   />
                 </div>
                 <div className="w-100">
@@ -194,7 +213,6 @@ const AddDoctor = (props) => {
                     name="linkdin"
                     onChange={(e) => changeInput(e, index)}
                     value={newData === undefined ? e.linkdin : newData.linkdin}
-
                   />
                 </div>
 
@@ -217,22 +235,23 @@ const AddDoctor = (props) => {
           );
         })}
         <div className="mt-5 text-center">
-          {
-            newData === undefined ? <button
+          {newData === undefined ? (
+            <button
               type="submit"
               onClick={(e) => ChangeSubmit(e)}
               className="mx-auto appointment-btn scrollto"
             >
               Submit
-            </button> :
-              <button
-                type="submit"
-                onClick={(e) => handleUpdate(e)}
-                className="mx-auto appointment-btn scrollto"
-              >
-                Update
-              </button>
-          }
+            </button>
+          ) : (
+            <button
+              type="submit"
+              onClick={(e) => handleUpdate(e)}
+              className="mx-auto appointment-btn scrollto"
+            >
+              Update
+            </button>
+          )}
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 const HeaderMain = () => {
   return (
@@ -42,51 +42,51 @@ const HeaderMain = () => {
             <nav id="navbar" className="order-last navbar order-lg-0">
               <ul>
                 <li>
-                  <Link className="nav-link active" href="#">
+                  <NavLink className="nav-link active" to="/">
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     className="nav-link"
                     to="/department"
                   >
                     Departments
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="nav-link"  to="/medicine">
+                  <NavLink className="nav-link"  to="/medicine">
                     Medicine
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="nav-link"  to="/doctors">
+                  <NavLink className="nav-link"  to="/doctors">
                     Doctors
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="nav-link "  to="/aboutus">
+                  <NavLink className="nav-link "  to="/aboutus">
                     About
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link className="nav-link"  to="/contactus">
+                  <NavLink className="nav-link"  to="/contactus">
                     Contact
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
               <i className="bi bi-list mobile-nav-toggle" />
             </nav>
-            <Link
+            <NavLink
               to="/appointment"
               className="appointment-btn scrollto"
             >
               <span className="d-none d-md-inline">Make an Appointment</span>
                
-            </Link>
-            <Link to="/login" className="appointment-btn scrollto">
+            </NavLink>
+            <NavLink to="/login" className="appointment-btn scrollto">
               <span className="d-none d-md-inline">Login/ Signup</span>
-            </Link>
+            </NavLink>
           </div>
         </header>
       </div>

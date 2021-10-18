@@ -69,7 +69,7 @@ const Medicine = () => {
       localMData = JSON.parse(localData);
     }
 
-    setData(localMData);
+    setData(localMData[0]);
   };
 
   useEffect(() => {

@@ -1,25 +1,50 @@
-import { render } from "@testing-library/react";
 import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import AddAppointment from "./AddAppointment";
+
 
 const Appointment = () => {
-  const [userAppointment, setUserAppointment] = useState({
-    name : "",
-    email : "",
-    phone : "",
-    date : "",
-  })
- 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   const newEntry = {name:name, email:email, phone: phone, date:date,};
-  //   setAllEntry([...allEntry, newEntry]);
-  // }
 
-  const handleInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    console.log(name);
-  }
+    const [data, setData] = useState()
+  //   const appointmentData = [
+  //     {
+  //       name: "Dhruvit Patel",
+  //       email: "dhruvitpatel560@gmail.com",
+  //       phone: 7984870403,
+  //       appointment: "19/12/2021",
+  //       department: "MD",
+  //       message:
+  //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, rem.",
+  //     },
+  //     {
+  //       name: "Abhay nehra",
+  //       email: "abhay@gmail.com",
+  //       phone: 8984870403,
+  //       appointment: "22/12/2021",
+  //       department: "BHMS",
+  //       message: "Ipsum dolor, sit amet consectetur adipisicing elit. Cum, rem.",
+  //     },
+  //     {
+  //       name: "Virat Kohli",
+  //       email: "viratkohli@gmail.com",
+  //       phone: 9984870403,
+  //       appointment: "09/12/2021",
+  //       department: "MD",
+  //       message:
+  //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, rem.",
+  //     },
+  //   ];
+
+  
+      const dataGet = () => {
+        var d = JSON.parse(localStorage.getItem("appointment"));
+        setData(d)
+      }
+ 
+
+//   console.log(dataGet)
+  
   return (
     <>
       <section id="appointment" className="appointment">
@@ -34,88 +59,73 @@ const Appointment = () => {
               placerat mi et suscipit pulvinar.
             </p>
           </div>
-          <form method="post" className="php-email-form">
-            <div className="row">
-              <div className="col-md-4 form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  placeholder="Your Name"
-                  value={userAppointment.name}
-                  onChange={handleInput}
-                />
-              </div>
-              <div className="mt-3 col-md-4 form-group mt-md-0">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Your Email"
-                  value={userAppointment.email}
-                  onChange={handleInput}
-                />
-                <div className="validate" />
-              </div>
-              <div className="mt-3 col-md-4 form-group mt-md-0">
-                <input
-                  type="tel"
-                  className="form-control"
-                  name="phone"
-                  id="phone"
-                  placeholder="Your Phone"
-                />
-                <div className="validate" />
-              </div>
-            </div>
-            <div className="row">
-              <div className="mt-3 col-md-4 form-group">
-                <input
-                  type="datetime"
-                  name="date"
-                  className="form-control datepicker"
-                  id="date"
-                  placeholder="Appointment Date"
-                />
-                <div className="validate" />
-              </div>
-              <div className="mt-3 col-md-4 form-group">
-                <select
-                  name="department"
-                  id="department"
-                  className="form-select"
-                >
-                  <option value>Select Department</option>
-                  <option value="Department 1">Department 1</option>
-                  <option value="Department 2">Department 2</option>
-                  <option value="Department 3">Department 3</option>
-                </select>
-                <div className="validate" />
-              </div>
-            </div>
-            <div className="mt-3 form-group">
-              <textarea
-                className="form-control"
-                name="message"
-                rows={5}
-                placeholder="Message (Optional)"
-                defaultValue={""}
-              />
-              <div className="validate" />
-            </div>
-            <div className="mb-3">
-              <div className="loading">Loading</div>
-              <div className="error-message" />
-              <div className="sent-message">
-                Your appointment request has been sent successfully. Thank you!
-              </div>
-            </div>
-            <div className="text-center">
-              <button type="submit">Make an Appointment</button>
-            </div>
-          </form>
+          <div className="mt-4">
+            <Tabs>
+              <TabList>
+                <Tab>Title 1</Tab>
+                <Tab>Title 2</Tab>
+              </TabList>
+
+              <TabPanel>
+                <AddAppointment />
+              </TabPanel>
+              <TabPanel>
+                <div className="row doctors">
+                  {/* {appointmentData.map((e, index) => {
+                    return (
+                      <> */}
+                  <div className="mt-4 col-lg-6">
+                    <div className="member d-flex align-items-start">
+                      <div className="member-info">
+                        {/* <h4>Name : {e.name}</h4>
+                              <p>Email : {e.email}</p>
+                              <p>Phone : {e.phone}</p>
+                              <p>Appointment : {e.appointment}</p>
+                              <p>Department : {e.department}</p>
+                              <p>Message : {e.message}</p> */}
+
+                        <div className="mt-3">
+                          <button className="bg-transparent">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z" />
+                              <path
+                                fill="#00cb2c"
+                                d="M12.9 6.858l4.242 4.243L7.242 21H3v-4.243l9.9-9.9zm1.414-1.414l2.121-2.122a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414l-2.122 2.121-4.242-4.242z"
+                              />
+                            </svg>
+                          </button>
+                          <a href="#">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z" />
+                              <path
+                                fill="red"
+                                d="M17 4h5v2h-2v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6H2V4h5V2h10v2zM9 9v8h2V9H9zm4 0v8h2V9h-2z"
+                              />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* </>
+                    );
+                  })} */}
+                </div>
+              </TabPanel>
+            </Tabs>
+          </div>
         </div>
       </section>
-      
     </>
   );
 };
