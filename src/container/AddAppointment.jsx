@@ -36,17 +36,21 @@ const AddAppointment = () => {
   };
 
   const handleSubmit = () => {
-    let localData = localStorage.getItem("appointment");
-    let localAData;
-    
-    if(localData === null){
-      localStorage.setItem("appointment", JSON.stringify(inputField))
-    }else{
-      localAData = JSON.parse(localData);
+    let localData = localStorage.getItem("appointments")
+    let localReviewData
+
+    //console.log(inputField[0])
+
+    if (localData === null || localData === undefined) {
+      localStorage.setItem("appointments", JSON.stringify(inputField))
+      localReviewData = inputField
+      //console.log("1")
+    } else {
+      localReviewData = JSON.parse(localData)
+      //console.log("2")
     }
 
-    console.log(localAData);
-    // console.log("aa");    
+    console.log(localReviewData)
   }
   return (
     <>
