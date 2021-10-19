@@ -45,8 +45,8 @@ const AddAppointment = () => {
       localAData = JSON.parse(localData);
     }
 
-    setInputField(localAData);
-    console.log(inputField);    
+    console.log(localAData);
+    // console.log("aa");    
   }
   return (
     <>
@@ -92,7 +92,7 @@ const AddAppointment = () => {
                   <div className="row">
                     <div className="mt-3 col-md-4 form-group">
                       <input
-                        type="datetime"
+                        type="text"
                         name="date"
                         className="form-control datepicker"
                         id="date"

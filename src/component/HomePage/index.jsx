@@ -1,6 +1,36 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HomePage = () => {
+  var settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+  };
+
+  const reviewData = [
+    {
+      name: "Jacob Wilsson",
+      position: "Writer",
+      review:
+        "Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.z",
+    },
+    {
+      name: "John Doe",
+      position: "Artist",
+      review:
+        "Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.z",
+    },
+    {
+      name: "Mitchel Smith",
+      position: "Designer",
+      review:
+        "Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.z",
+    },
+  ];
   return (
     <>
       <div>
@@ -28,21 +58,21 @@ const HomePage = () => {
                     <p>Doctors</p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 mt-5 mt-md-0">
+                <div className="mt-5 col-lg-3 col-md-6 mt-md-0">
                   <div className="count-box">
                     <i className="far fa-hospital" />
                     <span>18</span>
                     <p>Departments</p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                <div className="mt-5 col-lg-3 col-md-6 mt-lg-0">
                   <div className="count-box">
                     <i className="fas fa-heartbeat" />
                     <span>980</span>
                     <p>Patients</p>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                <div className="mt-5 col-lg-3 col-md-6 mt-lg-0">
                   <div className="count-box">
                     <i className="fas fa-award" />
                     <span>12</span>
@@ -79,7 +109,7 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                <div className="mt-4 col-lg-4 col-md-6 d-flex align-items-stretch mt-md-0">
                   <div className="icon-box">
                     <div className="icon">
                       <i className="fas fa-bed" />
@@ -93,7 +123,7 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                <div className="mt-4 col-lg-4 col-md-6 d-flex align-items-stretch mt-lg-0">
                   <div className="icon-box">
                     <div className="icon">
                       <i className="fas fa-hospital-user" />
@@ -107,7 +137,7 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                <div className="mt-4 col-lg-4 col-md-6 d-flex align-items-stretch">
                   <div className="icon-box">
                     <div className="icon">
                       <i className="fas fa-dna" />
@@ -121,7 +151,7 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                <div className="mt-4 col-lg-4 col-md-6 d-flex align-items-stretch">
                   <div className="icon-box">
                     <div className="icon">
                       <i className="fas fa-wheelchair" />
@@ -132,7 +162,7 @@ const HomePage = () => {
                     <p>Etiam in massa eu neque euismod consectetur.</p>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                <div className="mt-4 col-lg-4 col-md-6 d-flex align-items-stretch">
                   <div className="icon-box">
                     <div className="icon">
                       <i className="fas fa-notes-medical" />
@@ -151,142 +181,44 @@ const HomePage = () => {
               <div className="section-title">
                 <h2>Reviews</h2>
               </div>
-              <div
-                className="testimonials-slider swiper-container"
-                data-aos="fade-up"
-                data-aos-delay={100}
-              >
-                   <div>
-                    <div className="testimonial-wrap">
-                      <div className="testimonial-item">
-                        <img
-                          src={
-                            require("../../assets/img/testimonials/testimonials-1.jpg")
-                              .default
-                          }
-                          className="testimonial-img"
-                          alt
-                        />
-                        <h3>Jacob Wilsson</h3>
-                        <h4>Writer</h4>
-                        <p>
-                          <i className="bx bxs-quote-alt-left quote-icon-left" />
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Duis posuere, lacus ac tincidunt tempor, sapien
-                          justo ultrices ante, vel pharetra turpis ex ac nisi.
-                          Aliquam tempor egestas turpis, nec commodo lorem
-                          egestas eleifend. Curabitur lacus ipsum, fermentum sit
-                          amet leo non, blandit tincidunt turpis.
-                          <i className="bx bxs-quote-alt-right quote-icon-right" />
-                        </p>
-                      </div>
-                    </div>
-                    </div>
-                    <div>
-                    <div className="testimonial-wrap">
-                      <div className="testimonial-item">
-                        <img
-                          src={
-                            require("../../assets/img/testimonials/testimonials-2.jpg")
-                              .default
-                          }
-                          className="testimonial-img"
-                          alt
-                        />
-                        <h3>Ava Smith</h3>
-                        <h4>Artist</h4>
-                        <p>
-                          <i className="bx bxs-quote-alt-left quote-icon-left" />
-                          Praesent pellentesque leo vestibulum, facilisis ante
-                          eget, pharetra mi. Curabitur risus mauris, dignissim
-                          ullamcorper vehicula id, aliquet ut turpis. Nunc
-                          euismod nec nulla non tincidunt. Vivamus nisi mauris,
-                          blandit quis sem sit amet, posuere blandit diam. Cras
-                          quis quam suscipit.
-                          <i className="bx bxs-quote-alt-right quote-icon-right" />
-                        </p>
-                      </div>
-                    </div>
-                    </div>
-                    <div>
-                    <div className="testimonial-wrap">
-                      <div className="testimonial-item">
-                        <img
-                          src={
-                            require("../../assets/img/testimonials/testimonials-3.jpg")
-                              .default
-                          }
-                          className="testimonial-img"
-                          alt
-                        />
-                        <h3>Abigail Martin</h3>
-                        <h4>Teacher</h4>
-                        <p>
-                          <i className="bx bxs-quote-alt-left quote-icon-left" />
-                          Fusce ante ipsum, convallis auctor dui sit amet,
-                          feugiat blandit ex. Etiam eget tortor sed augue
-                          laoreet laoreet vel non libero. Sed in nibh ut sem
-                          ornare feugiat at at risus. Morbi gravida enim vitae
-                          tortor fringilla tristique. Nulla ac mauris et elit
-                          eleifend suscipit et quis lacus. Nam nec ex purus.
-                          <i className="bx bxs-quote-alt-right quote-icon-right" />
-                        </p>
-                      </div>
-                    </div>
-                    </div>
-                    <div>
-                    <div className="testimonial-wrap">
-                      <div className="testimonial-item">
-                        <img
-                          src={
-                            require("../../assets/img/testimonials/testimonials-4.jpg")
-                              .default
-                          }
-                          className="testimonial-img"
-                          alt
-                        />
-                        <h3>Alexander Tremblay</h3>
-                        <h4>Designer</h4>
-                        <p>
-                          <i className="bx bxs-quote-alt-left quote-icon-left" />
-                          Nam at est in nibh cursus hendrerit. Nunc commodo diam
-                          a erat fermentum aliquet. Integer at interdum nisi.
-                          Vivamus risus erat, facilisis a blandit ut,
-                          sollicitudin sed est. Vestibulum volutpat luctus quam
-                          sed finibus. Sed luctus odio eget ex posuere
-                          hendrerit. Donec iaculis
-                          <i className="bx bxs-quote-alt-right quote-icon-right" />
-                        </p>
-                      </div>
-                    </div>
-                    </div>
-                    <div>
-                    <div className="testimonial-wrap">
-                      <div className="testimonial-item">
-                        <img
-                          src={
-                            require("../../assets/img/testimonials/testimonials-5.jpg")
-                              .default
-                          }
-                          className="testimonial-img"
-                          alt
-                        />
-                        <h3>Jayden Brown</h3>
-                        <h4>Entrepreneur</h4>
-                        <p>
-                          <i className="bx bxs-quote-alt-left quote-icon-left" />
-                          Quisque tristique lectus eget pretium lacinia. Mauris
-                          suscipit sapien sit amet enim rhoncus tristique.
-                          Phasellus dictum aliquam nisl vel fermentum. Duis
-                          viverra luctus justo, vel aliquam ipsum mollis nec.
-                          Pellentesque quis suscipit erat. Mauris id lobortis
-                          tellus.
-                          <i className="bx bxs-quote-alt-right quote-icon-right" />
-                        </p>
-                      </div>
-                    </div>
-                    </div>
+              <div className="text-end">
+                <button
+                  className="mx-auto appointment-btn"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Add Review
+                </button>
               </div>
+              <Slider {...settings}>
+                {reviewData.map((e, index) => {
+                  return (
+                    <>
+                      <div>
+                        <div className="testimonial-wrap">
+                          <div className="testimonial-item">
+                            <img
+                              src={
+                                require("../../assets/img/testimonials/testimonials-1.jpg")
+                                  .default
+                              }
+                              className="testimonial-img"
+                              alt
+                            />
+                            <h3>{e.name}</h3>
+                            <h4>{e.position}</h4>
+                            <p>
+                              <i className="bx bxs-quote-alt-left quote-icon-left" />
+                              {e.review}
+                              <i className="bx bxs-quote-alt-right quote-icon-right" />
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </Slider>
             </div>
           </section>
           <section id="gallery" className="gallery">
@@ -428,6 +360,44 @@ const HomePage = () => {
             </div>
           </section>
         </main>
+      </div>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
