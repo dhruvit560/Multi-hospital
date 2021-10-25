@@ -18,6 +18,7 @@ import Login from "./container/Login";
 import Medicine from "./container/Medicine";
 import AddMedicine from "./container/AddMedicine";
 import AddDoctor from "./container/AddDoctor";
+import IncDec from "./container/IncDec";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/medicine" component={Medicine} />
         <Route path="/add-medicine" component={AddMedicine} />
         <Route path="/add-doctor" component={AddDoctor} />
+        <Route path="/inc-dec" component={IncDec} />
       </Switch>
       <Footer />
     </>

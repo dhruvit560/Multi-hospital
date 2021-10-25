@@ -45,8 +45,7 @@ const AddAppointment = () => {
       localAData = JSON.parse(localData);
     }
 
-    console.log(localAData);
-    // console.log("aa");    
+    console.log(localData);  
   }
   return (
     <>
